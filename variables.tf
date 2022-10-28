@@ -6,7 +6,7 @@ variable "app_name" {
 variable "app_environment" {
   type        = string
   description = "Application Environment"
-  default = "dev"
+  default     = "dev"
 }
 
 # variable "availability_zones" {
@@ -21,5 +21,5 @@ variable "s3_name" {
 variable "s3_environment" {
   type        = string
   description = "s3 Environment"
-  default = "dev"
+  default     = "dev"
 }
