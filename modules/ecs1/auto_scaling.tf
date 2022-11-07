@@ -8,7 +8,7 @@ resource "aws_appautoscaling_target" "ecs_target" {
 
 #Automatically scale capacity up by one
 resource "aws_appautoscaling_policy" "ecs_policy_up" {
-  name               = "scale-down"
+  name               = "${local.prefix}-scale-down"
   policy_type        = "StepScaling"
   resource_id        = "service/${aws_ecs_cluster.test-cluster.name}/${aws_ecs_service.test-service.name}"
   scalable_dimension = aws_appautoscaling_target.ecs_target.scalable_dimension

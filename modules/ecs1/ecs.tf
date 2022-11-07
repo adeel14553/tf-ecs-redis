@@ -15,7 +15,7 @@ data "template_file" "testapp" {
 }
 
 resource "aws_ecs_task_definition" "test-def" {
-  family                   = "testapp-task"
+  family                   = "${local.prefix}-testapp-task"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
@@ -25,7 +25,7 @@ resource "aws_ecs_task_definition" "test-def" {
 }
 
 resource "aws_ecs_service" "test-service" {
-  name            = "testapp-service"
+  name            = "${local.prefix}-testapp-service"
   cluster         = aws_ecs_cluster.test-cluster.id
   task_definition = aws_ecs_task_definition.test-def.arn
   desired_count   = var.app_count
@@ -39,7 +39,7 @@ resource "aws_ecs_service" "test-service" {
 
   load_balancer {
     target_group_arn = aws_alb_target_group.myapp-tg.arn
-    container_name   = "testapp"
+    container_name   = "${local.prefix}-testapp"
     container_port   = var.app_port
   }
 

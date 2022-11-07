@@ -6,6 +6,7 @@ resource "aws_vpc" "test-vpc" {
 
 # Fetch AZs in the current region
 data "aws_availability_zones" "available" {
+  # names = ["us-east-1,us-east-2"]
 }
 
 

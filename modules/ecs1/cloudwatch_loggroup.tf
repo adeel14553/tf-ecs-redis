@@ -11,6 +11,6 @@ resource "aws_cloudwatch_log_group" "testapp_log_group" {
 }
 
 resource "aws_cloudwatch_log_stream" "myapp_log_stream" {
-  name           = "test-log-stream"
+  name           = "${local.prefix}-test-log-stream"
   log_group_name = aws_cloudwatch_log_group.testapp_log_group.name
 }

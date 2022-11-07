@@ -1,13 +1,13 @@
-#in this template we are creating aws application laadbalancer and target group and alb http listener
+#in this template we are creating aws application loadbalancer and target group and alb http listener
 
 resource "aws_alb" "alb" {
-  name           = "myapp-load-balancer"
+  name           = "${local.prefix}-myapp-load-balancer"
   subnets        = aws_subnet.public.*.id
   security_groups = [aws_security_group.alb-sg.id]
 }
 
 resource "aws_alb_target_group" "myapp-tg" {
-  name        = "myapp-tg"
+  name        = "${local.prefix}-myapp-tg"
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
