@@ -25,6 +25,10 @@
 #   source = "./modules/ecs"
 # }
 
-module "ecs1" {
-  source = "./modules/ecs1"
+# module "ecs1" {
+#   source = "./modules/ecs1"
+# }
+
+module "alb" {
+  source = "./modules/alb"
 }
