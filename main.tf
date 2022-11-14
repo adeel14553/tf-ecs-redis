@@ -25,10 +25,30 @@
 #   source = "./modules/ecs"
 # }
 
-# module "ecs1" {
-#   source = "./modules/ecs1"
-# }
+module "ecs1" {
+  source = "./modules/ecs1"
+}
+data "mod-ecs" "ecs1" {
+  name = "mod-ecs-ecs1"  #Implicit dependencies
+}
 
 module "alb" {
   source = "./modules/alb"
+  name = data.mod-ecs.ecs1.id
+
 }
+
+####
+/* aws_ecs service with load balance and it have the alb arn. */
+## How to reference on root module
+
+
+module "vpc" {  
+   source = "./modules/vpc"   
+
+   config = var.config  
+}
+
+
+
+
